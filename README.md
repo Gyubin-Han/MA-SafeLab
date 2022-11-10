@@ -9,6 +9,3 @@
 - 이건우 : https://github.com/2gunwoo
 - 이지혁 : https://github.com/wlgur313
 - 한규빈 : https://github.com/Gyubin-Han
-
-## 진행 현황
-https://docs.google.com/spreadsheets/d/1mtuWdOrApLJDT7_EcuddmrZVWZyr1nw_7gylojcHU4c/edit?usp=sharing
