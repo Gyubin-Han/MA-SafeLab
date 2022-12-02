@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B3000000">
+
+    <EditText
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/et_id"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="아이디"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/et_pass"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="비밀번호"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/et_id"
+        app:layout_constraintStart_toStartOf="@+id/et_id"
+        app:layout_constraintTop_toBottomOf="@+id/et_id" />
+    <EditText
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/et_passck"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="비밀번호 확인"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/et_pass"
+        app:layout_constraintStart_toStartOf="@+id/et_pass"
+        app:layout_constraintTop_toBottomOf="@+id/et_pass" />
+
+    <EditText
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/et_name"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="이름"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/et_passck"
+        app:layout_constraintStart_toStartOf="@+id/et_passck"
+        app:layout_constraintTop_toBottomOf="@+id/et_passck" />
+
+    <EditText
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/et_age"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="연구소"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/et_name"
+        app:layout_constraintStart_toStartOf="@+id/et_name"
+        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+    <EditText
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/et_hak"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="부서"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/et_age"
+        app:layout_constraintStart_toStartOf="@+id/et_age"
+        app:layout_constraintTop_toBottomOf="@+id/et_age" />
+    <EditText
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/et_maj"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="전화번호"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/et_hak"
+        app:layout_constraintStart_toStartOf="@+id/et_hak"
+        app:layout_constraintTop_toBottomOf="@+id/et_hak" />
+
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:text="회원가입"
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/et_maj"
+        app:layout_constraintStart_toStartOf="@+id/et_maj"
+        app:layout_constraintTop_toBottomOf="@+id/et_maj" />
+
+    <Button
+        android:id="@+id/validateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginTop="28dp"
+        android:text="중복확인"
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toEndOf="@+id/et_id"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
