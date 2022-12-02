@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B3000000">
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+
+
+        <Button
+            app:backgroundTint="#ffd700"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOAD"
+            android:id="@+id/load"
+            android:layout_weight="1"/>
+
+
+
+        <Button
+            app:backgroundTint="#ffd700"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SAVE"
+            android:id="@+id/save"
+            android:layout_weight="1" />
+
+
+
+        <Button
+            app:backgroundTint="#ffd700"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DELETE"
+            android:id="@+id/delete"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+
+    <EditText
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/inputText"
+        android:layout_weight="9"
+        android:textIsSelectable="false"
+        android:hint="메모 입력"
+        android:gravity="top" />
+
+
+</LinearLayout>
