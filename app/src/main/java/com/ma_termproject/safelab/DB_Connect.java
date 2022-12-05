@@ -28,10 +28,21 @@ public class DB_Connect extends Thread {
 
     Handler handler;
 
+    // 데이터베이스를 구분하는데 사용되는 상수 정의
+    public static final String TAG_DB_LOGIN="login"; // 로그인 DB (사용자 DB에서 아이디와 계정 진위여부 값만 받아옴.)
+    public static final String TAG_DB_CHEM="chem"; // 화학물질 DB
+    public static final String TAG_DB_USER="user"; // 사용자 DB
+    public static final String TAG_DB_DEPT="depart"; // 부서 DB
+    public static final String TAG_DB_EMERGENCY="emergency"; // 긴급모드 DB
+    public static final String TAG_DB_CHEM_MANAGE="chem_manage"; // 화학물질 관리 DB
+    public static final String TAG_DB_CHEM_USELOG="chem_uselog"; // 화학물질 사용 기록 DB
+    public static final String TAG_DB_SENS="sensitive_info";
     // 데이터 속성명을 태그 형태로 미리 정의
     private static final String TAG_RESULTS="result";
     // 로그인(사용자) DB
+    // TAG_LOGIN_PW를 제외한 모든 속성은 사용자 테이블에서 사용됨.
     public static final String TAG_LOGIN_ID="id";
+    public static final String TAG_LOGIN_PW="pw"; // 로그인하는 경우에만 사용되는 데이터
     public static final String TAG_LOGIN_NAME="name";
     public static final String TAG_LOGIN_DEPT="depart";
     public static final String TAG_LOGIN_EMAIL="email";
@@ -165,6 +176,76 @@ public class DB_Connect extends Thread {
 //            }
         }
         return null;
+    }
+
+    JSONObject makeJson(HashMap<String,String> data){
+        JSONObject jobj=new JSONObject();
+        try {
+            switch (db) {
+                case TAG_DB_LOGIN:
+                    jobj.put(TAG_LOGIN_ID, data.get(TAG_LOGIN_ID));
+                    jobj.put(TAG_LOGIN_PW,data.get(TAG_LOGIN_PW));
+                    break;
+                case TAG_DB_CHEM:
+                    jobj.put(TAG_CHEM_CASNO,data.get(TAG_CHEM_CASNO));
+                    jobj.put(TAG_CHEM_ID,data.get(TAG_CHEM_ID));
+                    jobj.put(TAG_CHEM_NAMEKOR,data.get(TAG_CHEM_NAMEKOR));
+                    jobj.put(TAG_CHEM_ENNO,data.get(TAG_CHEM_ENNO));
+                    jobj.put(TAG_CHEM_KENO,data.get(TAG_CHEM_KENO));
+                    jobj.put(TAG_CHEM_UNNO,data.get(TAG_CHEM_UNNO));
+                    jobj.put(TAG_CHEM_LEVEL,data.get(TAG_CHEM_LEVEL));
+                    break;
+                case TAG_DB_USER:
+                    jobj.put(TAG_LOGIN_ID, data.get(TAG_LOGIN_ID));
+                    jobj.put(TAG_LOGIN_NAME,data.get(TAG_LOGIN_NAME));
+                    jobj.put(TAG_LOGIN_DEPT,data.get(TAG_LOGIN_DEPT));
+                    jobj.put(TAG_LOGIN_EMAIL,data.get(TAG_LOGIN_EMAIL));
+                    break;
+                case TAG_DB_DEPT:
+                    jobj.put(TAG_DEPT_NO,data.get(TAG_DEPT_NO));
+                    jobj.put(TAG_DEPT_NAME,data.get(TAG_DEPT_NAME));
+                    jobj.put(TAG_DEPT_MASTER,data.get(TAG_DEPT_MASTER));
+                    break;
+                case TAG_DB_CHEM_MANAGE:
+                    jobj.put(TAG_CHEM_MAN_NO,data.get(TAG_CHEM_MAN_NO));
+                    jobj.put(TAG_CHEM_MAN_CHEMNO,data.get(TAG_CHEM_MAN_CHEMNO));
+                    jobj.put(TAG_CHEM_MAN_DEPT,data.get(TAG_CHEM_MAN_DEPT));
+                    jobj.put(TAG_CHEM_MAN_CHARGE,data.get(TAG_CHEM_MAN_CHARGE));
+                    jobj.put(TAG_CHEM_MAN_PURCHASE,data.get(TAG_CHEM_MAN_PURCHASE));
+                    jobj.put(TAG_CHEM_MAN_OPEN,data.get(TAG_CHEM_MAN_OPEN));
+                    jobj.put(TAG_CHEM_MAN_LASTDAY,data.get(TAG_CHEM_MAN_LASTDAY));
+                    break;
+                case TAG_DB_CHEM_USELOG:
+                    jobj.put(TAG_CHEM_USELOG_NO,data.get(TAG_CHEM_USELOG_NO));
+                    jobj.put(TAG_CHEM_USELOG_USEDT,data.get(TAG_CHEM_USELOG_USEDT));
+                    jobj.put(TAG_CHEM_USELOG_RETDT,data.get(TAG_CHEM_USELOG_RETDT));
+                    jobj.put(TAG_CHEM_USELOG_CHEMNO,data.get(TAG_CHEM_USELOG_CHEMNO));
+                    jobj.put(TAG_CHEM_USELOG_REQ,data.get(TAG_CHEM_USELOG_REQ));
+                    jobj.put(TAG_CHEM_USELOG_REQDEPT,data.get(TAG_CHEM_USELOG_REQDEPT));
+                    jobj.put(TAG_CHEM_USELOG_APPROVER,data.get(TAG_CHEM_USELOG_APPROVER));
+                    jobj.put(TAG_CHEM_USELOG_APPROVDEPT,data.get(TAG_CHEM_USELOG_APPROVDEPT));
+                    break;
+                case TAG_DB_SENS:
+                    jobj.put(TAG_SENS_USER,data.get(TAG_SENS_USER));
+                    jobj.put(TAG_SENS_ON,data.get(TAG_SENS_ON));
+                    jobj.put(TAG_SENS_GENDER,data.get(TAG_SENS_GENDER));
+                    jobj.put(TAG_SENS_BOOLD,data.get(TAG_SENS_BOOLD));
+                    jobj.put(TAG_SENS_HEIGHT,data.get(TAG_SENS_HEIGHT));
+                    jobj.put(TAG_SENS_WEIGHT,data.get(TAG_SENS_WEIGHT));
+                    jobj.put(TAG_SENS_ILLINESS,data.get(TAG_SENS_ILLINESS));
+                    break;
+                case TAG_DB_EMERGENCY:
+                    jobj.put(TAG_EMER_NO,data.get(TAG_EMER_NO));
+                    jobj.put(TAG_EMER_DT,data.get(TAG_EMER_DT));
+                    jobj.put(TAG_EMER_USER,data.get(TAG_EMER_USER));
+                    jobj.put(TAG_EMER_DEPT,data.get(TAG_EMER_DEPT));
+                    jobj.put(TAG_EMER_NOW,data.get(TAG_EMER_NOW));
+                    break;
+            }
+        }catch(JSONException e){
+            Log.e("SafeLab","JSon 오류 : "+e);
+        }
+        return jobj;
     }
 
     private void jsonProcess(){
