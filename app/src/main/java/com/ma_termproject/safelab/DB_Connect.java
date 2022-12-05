@@ -2,6 +2,8 @@ package com.ma_termproject.safelab;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -23,6 +25,8 @@ import java.util.HashMap;
 
 public class DB_Connect extends Thread {
     // NEW CODE
+
+    Handler handler;
 
     // 데이터 속성명을 태그 형태로 미리 정의
     private static final String TAG_RESULTS="result";
@@ -84,7 +88,7 @@ public class DB_Connect extends Thread {
     // 데이터베이스를 구분하는데 사용되는 상수 정의
     public static final short DB_LOGIN=1; // 로그인 DB (사용자 DB에서 아이디와 계정 진위여부 값만 받아옴.)
     public static final short DB_CHEM=2; // 화학물질 DB
-    public static final short DB_PEOPLE=3; // 사용자 DB
+    public static final short DB_USER=3; // 사용자 DB
     public static final short DB_DEPT=4; // 부서 DB
     public static final short DB_EMERGENCY=5; // 긴급모드 DB
     public static final short DB_CHEM_MANAGE=6; // 화학물질 관리 DB
@@ -101,7 +105,7 @@ public class DB_Connect extends Thread {
     private int conn_time=5000;
     private int read_time=3000;
 
-    DB_Connect(String host,short db,boolean mode){
+    DB_Connect(String host, short db, boolean mode, Handler handler){
         this.host=host;
         switch(db){
             case DB_LOGIN:
@@ -110,7 +114,7 @@ public class DB_Connect extends Thread {
             case DB_CHEM:
                 this.db="chem";
                 break;
-            case DB_PEOPLE:
+            case DB_USER:
                 this.db="user";
                 break;
             case DB_DEPT:
@@ -131,9 +135,10 @@ public class DB_Connect extends Thread {
             default:
         }
         this.db_mode=mode;
+        this.handler=handler;
     }
-    DB_Connect(short db,boolean mode){
-        this("http://localhost/",db,mode);
+    DB_Connect(short db,boolean mode,Handler handler){
+        this("http://localhost/",db,mode,handler);
     }
 
     ArrayList<HashMap<String,String>> getData(){
@@ -151,7 +156,7 @@ public class DB_Connect extends Thread {
 //            switch(db){
 //                case DB_LOGIN:
 //                case DB_CHEM:
-//                case DB_PEOPLE:
+//                case DB_USER:
 //                case DB_DEPT:
 //                case DB_EMERGENCY:
 //                case DB_CHEM_MANAGE:
@@ -172,15 +177,15 @@ public class DB_Connect extends Thread {
                 JSONObject jsobj=datas.getJSONObject(i);
                 String id=jsobj.getString(TAG_LOGIN_ID);
                 String name=jsobj.getString(TAG_LOGIN_NAME);
-                String num=jsobj.getString(TAG_LOGIN_DEPT);
+                String dept=jsobj.getString(TAG_LOGIN_DEPT);
 
                 // 해쉬맵을 통해 데이터를 키-값 형태로 저장
-                HashMap<String,String> data=new HashMap<String,String>();
-                data.put(TAG_LOGIN_ID,id);
-                data.put(TAG_LOGIN_NAME,name);
-                data.put(TAG_LOGIN_DEPT,num);
+                HashMap<String,String> data_map=new HashMap<String,String>();
+                data_map.put(TAG_LOGIN_ID,id);
+                data_map.put(TAG_LOGIN_NAME,name);
+                data_map.put(TAG_LOGIN_DEPT,dept);
 
-                dataArray.add(data);
+                dataArray.add(data_map);
             }
 
             return;
@@ -194,6 +199,7 @@ public class DB_Connect extends Thread {
     void loadData(){
         BufferedReader bufferedReader = null;
         jsonString=null;
+        dataArray=new ArrayList<HashMap<String,String>>();
 
         try {
             URL url = new URL(host+"/"+db+".php");
@@ -262,6 +268,13 @@ public class DB_Connect extends Thread {
     }
 
     public void run(){
+        if(db_mode){
+            loadData();
+            Message msg=new Message();
+            msg.obj="";
+            handler.sendMessage(msg);
+        }
+//        else sendData();
 //        if(db_mode) {
 //            loadData();
 //            // 불러온 데이터가 없는 경우, 오류 발생
