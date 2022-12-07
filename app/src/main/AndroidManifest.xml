@@ -31,6 +31,16 @@
             android:name=".Namesearch"
             android:exported="true"/>
         <activity
+            android:name=".Cassearch"
+            android:exported="true"/>
+
+        <activity
+            android:name=".ImageActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"/>
+        <activity
             android:name=".MainActivity2"
             android:exported="true" />
         <activity
