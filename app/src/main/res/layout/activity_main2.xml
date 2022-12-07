@@ -15,7 +15,7 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="화학물질 정보"
+        android:text="화학물질 영문 검색"
         app:backgroundTint="#CC000000"
         android:textColor="#FFD770"
         android:layout_gravity="center"
