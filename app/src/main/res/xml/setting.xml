@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="vibrate"
+        android:title="진동알림"
+        android:summary="메세지가 왔을때 진동울림으로 알림을 받으려면 체크하세요."/>
+
+    <CheckBoxPreference
+        android:key="message"
+        android:title="소리 알림"
+        android:summary="소리로 알림을 받으려면 체크하세요."/>
+
+    <EditTextPreference
+        android:key="nickName"
+        android:title="닉네임"
+        android:summary="닉네임을 설정하세요."/>
+
+    <!-- Single Choice : RadioButton -->
+    <ListPreference
+        android:key="sound"
+        android:title="알림음"
+        android:summary="알림음을 설정합니다."
+        android:entries="@array/sounds"
+        android:entryValues="@array/sounds"/>
+    <!-- entries : 리스트에 표시되는 항목글씨-->
+    <!-- entryValues : 파일에 저장되는 값 -->
+
+    <!-- Multiple Choice : Checkbox-->
+    <MultiSelectListPreference
+        android:key="favor"
+        android:title="Favorites"
+        android:summary="좋아하는 항목들을 선택하세요(복수선택 가능)"
+        android:entries="@array/favors"
+        android:entryValues="@array/favors"/>
+
+    <RingtonePreference
+        android:key="ringtone"
+        android:title="choose alarm"
+        android:summary="알림음을 선택하세요."
+        android:icon="@android:drawable/ic_menu_help"/>
+
+    <!-- 카테고리 구분 형태-->
+    <PreferenceCategory
+        android:title="디버깅">
+
+        <SwitchPreference
+            android:key="debugging"
+            android:title="USB 디버깅"
+            android:summary="usb가 연결되었을 경우 디버그 모드 사용"
+            android:defaultValue="true"/>
+
+        <!-- 다른 설정값에 따라 활성화여부 -->
+        <CheckBoxPreference
+            android:key="usb_app"
+            android:title="USB로 설치된 앱 확인"
+            android:summary="usb디버그를 통해 설치된 앱의 목록을 확인합니다."
+            android:dependency="debugging"/>
+        <!-- dependency : 속성에 설정한 key값에 해당하는 preference의 true, false 여부에 따라 활성화-->
+
+    </PreferenceCategory>
+
+    <!-- PreferenceScreen 을 중첩으로 넣으면 새로운 창으로 보여줌-->
+
+    <!-- 인텐트를 넣으면 새로운 Component 실행 가능-->
+    <PreferenceScreen
+        android:title="이미지 보기">
+        <intent android:targetPackage="com.example.setting.ImageActivity"
+            android:targetClass="com.example.setting.SettingFragment"/>
+
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:title="네트워크"
+        android:summary="네트워크 설정을 합니다.">
+        <SwitchPreference
+            android:key="roaming"
+            android:title="데이터 로밍"
+            android:summaryOn="로밍이 되어 있으므로 과금이 있습니다."
+            android:summaryOff="로밍 시에 로밍서비스 연결"/>
+    </PreferenceScreen>
+
+
+</PreferenceScreen>
