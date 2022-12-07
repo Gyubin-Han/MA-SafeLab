@@ -19,7 +19,7 @@ public class MainActivity2 extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity2.this,MainActivity3.class);
+                Intent intent=new Intent(MainActivity2.this,Namesearch.class);
                 startActivity(intent);
             }
         });
