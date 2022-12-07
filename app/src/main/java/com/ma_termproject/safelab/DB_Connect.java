@@ -154,7 +154,7 @@ public class DB_Connect extends Thread {
     }
 
     void setSendData(JSONObject write_data){
-
+        send_json=write_data;
     }
 
     ArrayList<HashMap<String,String>> getData(){
