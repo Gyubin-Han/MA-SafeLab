@@ -314,6 +314,10 @@ public class DB_Connect extends Thread {
     }
 
     boolean sendData() {
+        if(send_json==null){
+            Log.e("SafeLab","DB 데이터 전송 오류 : 보낼 데이터가 없습니다. 먼저 보낼 데이터를 설정한 뒤, 전송을 시도해야 합니다.");
+            return false;
+        }
         try {
             JSONArray dataArr=new JSONArray();
             URL url = new URL(host+"/"+db+".php");
