@@ -153,14 +153,19 @@ public class DB_Connect extends Thread {
         this("http://localhost/",db,mode,handler);
     }
 
+    // DB에 데이터 전송 모드로 사용 시, 보낼 데이터를 설정하는 메소드
+    // 스레드를 실행하기 전에 이 메소드를 사용하여 데이터 설정부터 해야 함.
     void setSendData(JSONObject write_data){
         send_json=write_data;
     }
 
+    // 현 객체에 있는 데이터 배열을 반환하는 메소드
     ArrayList<HashMap<String,String>> getData(){
         return dataArray;
     }
 
+    // 현 객체 내 데이터 배열에 있는 별 건의 데이터를 찾아서 반환함.
+    // 매개변수 - attr : 찾을 데이터의 속성 , data : 찾을 데이터 값
     HashMap<String,String> getData(String attr,String data){
         int size=0;
         size=dataArray.size();
@@ -183,9 +188,11 @@ public class DB_Connect extends Thread {
         return null;
     }
 
+    // HashMap 클래스의 데이터를 JSON 객체로 변환하여 반환하는 메소드
     JSONObject makeJson(HashMap<String,String> data){
         JSONObject jobj=new JSONObject();
         try {
+            // 각각의 DB 모드에 알맞게 변환
             switch (db) {
                 case TAG_DB_LOGIN:
                     jobj.put(TAG_LOGIN_ID, data.get(TAG_LOGIN_ID));
@@ -255,6 +262,7 @@ public class DB_Connect extends Thread {
         return jobj;
     }
 
+    // 수신받은 JSON 데이터를 설정한 DB 구조에 맞게 객체 배열로 변환하는 메소드
     private void jsonProcess(){
         try{
             // JSON 배열 내에 있는 객체 단위로 데이터를 받기 위한 변수
@@ -263,15 +271,70 @@ public class DB_Connect extends Thread {
 
             for(int i=0;i<datas.length();i++){
                 JSONObject jsobj=datas.getJSONObject(i);
-                String id=jsobj.getString(TAG_LOGIN_ID);
-                String name=jsobj.getString(TAG_LOGIN_NAME);
-                String dept=jsobj.getString(TAG_LOGIN_DEPT);
-
                 // 해쉬맵을 통해 데이터를 키-값 형태로 저장
                 HashMap<String,String> data_map=new HashMap<String,String>();
-                data_map.put(TAG_LOGIN_ID,id);
-                data_map.put(TAG_LOGIN_NAME,name);
-                data_map.put(TAG_LOGIN_DEPT,dept);
+
+                switch (db) {
+                    case TAG_DB_LOGIN:
+                        data_map.put(TAG_LOGIN_ID, jsobj.getString(TAG_LOGIN_ID));
+                        data_map.put(TAG_LOGIN_PW, jsobj.getString(TAG_LOGIN_PW));
+                        break;
+                    case TAG_DB_CHEM:
+                        data_map.put(TAG_CHEM_CASNO, jsobj.getString(TAG_CHEM_CASNO));
+                        data_map.put(TAG_CHEM_ID, jsobj.getString(TAG_CHEM_ID));
+                        data_map.put(TAG_CHEM_NAMEKOR, jsobj.getString(TAG_CHEM_NAMEKOR));
+                        data_map.put(TAG_CHEM_ENNO, jsobj.getString(TAG_CHEM_ENNO));
+                        data_map.put(TAG_CHEM_KENO, jsobj.getString(TAG_CHEM_KENO));
+                        data_map.put(TAG_CHEM_UNNO, jsobj.getString(TAG_CHEM_UNNO));
+                        data_map.put(TAG_CHEM_LEVEL, jsobj.getString(TAG_CHEM_LEVEL));
+                        break;
+                    case TAG_DB_USER:
+                        data_map.put(TAG_LOGIN_ID, jsobj.getString(TAG_LOGIN_ID));
+                        data_map.put(TAG_LOGIN_NAME, jsobj.getString(TAG_LOGIN_NAME));
+                        data_map.put(TAG_LOGIN_DEPT, jsobj.getString(TAG_LOGIN_DEPT));
+                        data_map.put(TAG_LOGIN_EMAIL, jsobj.getString(TAG_LOGIN_EMAIL));
+                        break;
+                    case TAG_DB_DEPT:
+                        data_map.put(TAG_DEPT_NO, jsobj.getString(TAG_DEPT_NO));
+                        data_map.put(TAG_DEPT_NAME, jsobj.getString(TAG_DEPT_NAME));
+                        data_map.put(TAG_DEPT_MASTER, jsobj.getString(TAG_DEPT_MASTER));
+                        break;
+                    case TAG_DB_CHEM_MANAGE:
+                        data_map.put(TAG_CHEM_MAN_NO, jsobj.getString(TAG_CHEM_MAN_NO));
+                        data_map.put(TAG_CHEM_MAN_CHEMNO, jsobj.getString(TAG_CHEM_MAN_CHEMNO));
+                        data_map.put(TAG_CHEM_MAN_DEPT, jsobj.getString(TAG_CHEM_MAN_DEPT));
+                        data_map.put(TAG_CHEM_MAN_CHARGE, jsobj.getString(TAG_CHEM_MAN_CHARGE));
+                        data_map.put(TAG_CHEM_MAN_PURCHASE, jsobj.getString(TAG_CHEM_MAN_PURCHASE));
+                        data_map.put(TAG_CHEM_MAN_OPEN, jsobj.getString(TAG_CHEM_MAN_OPEN));
+                        data_map.put(TAG_CHEM_MAN_LASTDAY, jsobj.getString(TAG_CHEM_MAN_LASTDAY));
+                        break;
+                    case TAG_DB_CHEM_USELOG:
+                        data_map.put(TAG_CHEM_USELOG_NO, jsobj.getString(TAG_CHEM_USELOG_NO));
+                        data_map.put(TAG_CHEM_USELOG_USEDT, jsobj.getString(TAG_CHEM_USELOG_USEDT));
+                        data_map.put(TAG_CHEM_USELOG_RETDT, jsobj.getString(TAG_CHEM_USELOG_RETDT));
+                        data_map.put(TAG_CHEM_USELOG_CHEMNO, jsobj.getString(TAG_CHEM_USELOG_CHEMNO));
+                        data_map.put(TAG_CHEM_USELOG_REQ, jsobj.getString(TAG_CHEM_USELOG_REQ));
+                        data_map.put(TAG_CHEM_USELOG_REQDEPT, jsobj.getString(TAG_CHEM_USELOG_REQDEPT));
+                        data_map.put(TAG_CHEM_USELOG_APPROVER, jsobj.getString(TAG_CHEM_USELOG_APPROVER));
+                        data_map.put(TAG_CHEM_USELOG_APPROVDEPT, jsobj.getString(TAG_CHEM_USELOG_APPROVDEPT));
+                        break;
+                    case TAG_DB_SENS:
+                        data_map.put(TAG_SENS_USER, jsobj.getString(TAG_SENS_USER));
+                        data_map.put(TAG_SENS_ON, jsobj.getString(TAG_SENS_ON));
+                        data_map.put(TAG_SENS_GENDER, jsobj.getString(TAG_SENS_GENDER));
+                        data_map.put(TAG_SENS_BOOLD, jsobj.getString(TAG_SENS_BOOLD));
+                        data_map.put(TAG_SENS_HEIGHT, jsobj.getString(TAG_SENS_HEIGHT));
+                        data_map.put(TAG_SENS_WEIGHT, jsobj.getString(TAG_SENS_WEIGHT));
+                        data_map.put(TAG_SENS_ILLINESS, jsobj.getString(TAG_SENS_ILLINESS));
+                        break;
+                    case TAG_DB_EMERGENCY:
+                        data_map.put(TAG_EMER_NO, jsobj.getString(TAG_EMER_NO));
+                        data_map.put(TAG_EMER_DT, jsobj.getString(TAG_EMER_DT));
+                        data_map.put(TAG_EMER_USER, jsobj.getString(TAG_EMER_USER));
+                        data_map.put(TAG_EMER_DEPT, jsobj.getString(TAG_EMER_DEPT));
+                        data_map.put(TAG_EMER_NOW, jsobj.getString(TAG_EMER_NOW));
+                        break;
+                }
 
                 dataArray.add(data_map);
             }
@@ -302,6 +365,8 @@ public class DB_Connect extends Thread {
             }
 
             jsonString=sb.toString().trim(); // 앞 뒤에 붙어있는 불필요한 문자는 제거한 뒤 문자열 저장
+
+            if(bufferedReader!=null) bufferedReader.close();
         } catch (Exception e) {
             Log.e("SafeLab","DB 오류 | "+e);
             return;
@@ -313,11 +378,13 @@ public class DB_Connect extends Thread {
         jsonProcess();
     }
 
+    // DB 서버로 데이터를 발신한 뒤, 응답을 수신하는 객체
     boolean sendData() {
         if(send_json==null){
             Log.e("SafeLab","DB 데이터 전송 오류 : 보낼 데이터가 없습니다. 먼저 보낼 데이터를 설정한 뒤, 전송을 시도해야 합니다.");
             return false;
         }
+
         try {
             JSONArray dataArr=new JSONArray();
             URL url = new URL(host+"/"+db+".php");
@@ -338,14 +405,26 @@ public class DB_Connect extends Thread {
             StringBuilder sb=new StringBuilder();
             String readline=null;
             BufferedReader bfr=null;
+
+            // 정상적으로 응답을 수신한 경우
             if(urlConnection.getResponseCode()==HttpURLConnection.HTTP_OK){
                 bfr=new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"UTF-8"));
                 while((readline=bfr.readLine())!=null)
                     sb.append(readline).append("\n");
+                jsonString=sb.toString().trim(); // 앞 뒤에 붙어있는 불필요한 문자는 제거한 뒤 문자열 저장
+                
+                // 수신한 응답이 없는 경우 - 서버에 문제가 있음.
+                if(jsonString==null){
+                    Log.e("SafeLab","DB 통신 | 서버로부터 응답이 없습니다.");
+                    return false;
+                }
+
+                // 수신받은 JSON 데이터를 처리함.
+                jsonProcess();
             }else{
-                sb.append("\"code\" : \""+urlConnection.getResponseCode()+"\"");
+//                sb.append("\"code\" : \""+urlConnection.getResponseCode()+"\"");
                 Log.w("SafeLab","통신 결과 코드 : "+urlConnection.getResponseCode());
-                sb.append("\"message\" : \""+urlConnection.getResponseMessage()+"\"");
+//                sb.append("\"message\" : \""+urlConnection.getResponseMessage()+"\"");
                 Log.w("SafeLab","통신 응답 : "+urlConnection.getResponseMessage());
                 return false;
             }
@@ -364,12 +443,15 @@ public class DB_Connect extends Thread {
     }
 
     public void run(){
+        // 데이터 발신 모드로 객체 생성 시
         if(db_mode){
             loadData();
             Message msg=new Message();
             msg.obj="";
             handler.sendMessage(msg);
-        }else{
+        }
+        // 데이터 수신 모드로 객체 생성 시
+        else{
             sendData();
             Message msg=new Message();
             msg.obj="";
