@@ -4,7 +4,7 @@
 # 이거 실행하기 전에 꼭 데이터베이스에 있던 데이터들은 백업 필수!!!
 # 꼭 백업해야 함!!! 책임 못짐!
 #
-# Ver. 1.4   |   MySQL, MariaDB에 최적화됨.
+# Ver. 1.5   |   MySQL, MariaDB에 최적화됨.
 #
 # - 사용 방법1 : 필요한 부분을 선택하여 복사 후,
 #               mysql 터미널(명령 프롬프트) 창에 붙여넣기 후 Enter 키
@@ -34,7 +34,9 @@ CREATE USER IF NOT EXISTS safelab_user@localhost IDENTIFIED BY "1234";
 # 사용자 권한 부여
 USE mysql;
 DELETE FROM db WHERE host='localhost' AND user='safelab_user';
-INSERT INTO db VALUES('localhost','SafeLabDB','safelab_user','y','y','y','y','y','y','y','y','y','y','y','y','y','y','y','y','y','y','y');
+# 일부 버전에서 호환되지 않아 사용하지 않음.
+#INSERT INTO db VALUES('localhost','SafeLabDB','safelab_user','y','y','y','y','y','y','y','y','y','y','y','y','y','y','y','y','y','y','y');
+GRANT ALL PRIVILEGES ON SafeLabDB.* TO safelab_user@localhost;
 FLUSH PRIVILEGES;
 
 
