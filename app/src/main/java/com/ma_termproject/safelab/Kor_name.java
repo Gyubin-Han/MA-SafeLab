@@ -13,14 +13,17 @@ public class Kor_name {
     }
 
     public String getRank() {
+
         return this.cas;
     }
 
     public String getCountry() {
+
         return this.eng;
     }
 
     public String getPopulation() {
+
         return this.kor;
     }
 }
