@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#B3000000">
+
+    <EditText
+        android:hint="영문명 검색"
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/search"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <requestFocus />
+    </EditText>
+
+    <ListView
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/search" />
+
+</RelativeLayout>
