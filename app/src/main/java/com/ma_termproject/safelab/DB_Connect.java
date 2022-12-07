@@ -94,6 +94,7 @@ public class DB_Connect extends Thread {
     private boolean db_mode;
     public static final boolean READ=true;
     public static final boolean WRITE=false;
+    private JSONObject send_json=null;
 
     private String db=null;
     // 데이터베이스를 구분하는데 사용되는 상수 정의
@@ -104,7 +105,7 @@ public class DB_Connect extends Thread {
     public static final short DB_EMERGENCY=5; // 긴급모드 DB
     public static final short DB_CHEM_MANAGE=6; // 화학물질 관리 DB
     public static final short DB_CHEM_USELOG=7; // 화학물질 사용 기록 DB
-    public static final short DB_SENS=8;
+    public static final short DB_SENS=8; // 사용자 민감정보 DB
 
     private String jsonString;
     private JSONArray datas=null;
@@ -150,6 +151,10 @@ public class DB_Connect extends Thread {
     }
     DB_Connect(short db,boolean mode,Handler handler){
         this("http://localhost/",db,mode,handler);
+    }
+
+    void setSendData(JSONObject write_data){
+
     }
 
     ArrayList<HashMap<String,String>> getData(){
@@ -241,9 +246,11 @@ public class DB_Connect extends Thread {
                     jobj.put(TAG_EMER_DEPT,data.get(TAG_EMER_DEPT));
                     jobj.put(TAG_EMER_NOW,data.get(TAG_EMER_NOW));
                     break;
+                default:
+                    Log.e("SafeLab","JSON 오류 : 사전 정의된 형태의 데이터가 아닙니다.");
             }
         }catch(JSONException e){
-            Log.e("SafeLab","JSon 오류 : "+e);
+            Log.e("SafeLab","JSON 오류 : "+e);
         }
         return jobj;
     }
@@ -306,8 +313,9 @@ public class DB_Connect extends Thread {
         jsonProcess();
     }
 
-    boolean sendData(JSONObject data) {
+    boolean sendData() {
         try {
+            JSONArray dataArr=new JSONArray();
             URL url = new URL(host+"/"+db+".php");
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("POST");
@@ -320,7 +328,7 @@ public class DB_Connect extends Thread {
             OutputStream os = urlConnection.getOutputStream();
 
             BufferedWriter bfw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-            bfw.write(data.toString());
+            bfw.write(send_json.toString());
             bfw.flush();
 
             StringBuilder sb=new StringBuilder();
@@ -332,7 +340,10 @@ public class DB_Connect extends Thread {
                     sb.append(readline).append("\n");
             }else{
                 sb.append("\"code\" : \""+urlConnection.getResponseCode()+"\"");
+                Log.w("SafeLab","통신 결과 코드 : "+urlConnection.getResponseCode());
                 sb.append("\"message\" : \""+urlConnection.getResponseMessage()+"\"");
+                Log.w("SafeLab","통신 응답 : "+urlConnection.getResponseMessage());
+                return false;
             }
 
             if(bfw!=null) bfw.close();
@@ -351,6 +362,11 @@ public class DB_Connect extends Thread {
     public void run(){
         if(db_mode){
             loadData();
+            Message msg=new Message();
+            msg.obj="";
+            handler.sendMessage(msg);
+        }else{
+            sendData();
             Message msg=new Message();
             msg.obj="";
             handler.sendMessage(msg);
