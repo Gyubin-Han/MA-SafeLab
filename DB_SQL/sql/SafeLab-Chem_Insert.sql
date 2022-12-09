@@ -1,4 +1,5 @@
 # 화학물질 데이터 등록 SQL (CREATE SQL 1.5 버전 구조와 호환)
+# 이 데이터 등록 SQL 코드는 꼭 'SafeLab-Create_Table.sql'의 코드를 먼저 실행하여 데이터베이스 구조를 만들어놓은 뒤에 실행되어야 함.
 
 USE SafeLabDB;
 
