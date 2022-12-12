@@ -65,8 +65,8 @@
     <!-- 인텐트를 넣으면 새로운 Component 실행 가능-->
     <PreferenceScreen
         android:title="이미지 보기">
-        <intent android:targetPackage="com.example.setting.ImageActivity"
-            android:targetClass="com.example.setting.SettingFragment"/>
+        <intent android:targetPackage="com.example.myapplication909"
+            android:targetClass="com.example.myapplication909.ImageActivity"/>
 
     </PreferenceScreen>
 
