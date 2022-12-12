@@ -3,7 +3,6 @@ package com.example.myapplication909;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
