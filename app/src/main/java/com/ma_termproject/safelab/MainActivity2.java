@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
 public class MainActivity2 extends AppCompatActivity {
 
     @Override
@@ -60,6 +61,23 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity2.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button button9=findViewById(R.id.button9);
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity2.this, com.example.myapplication909.Cassearch.class);
+                startActivity(intent);
+            }
+        });
+        Button button10=findViewById(R.id.button10);
+        button10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity2.this, com.example.myapplication909.SettingsActivity.class);
                 startActivity(intent);
             }
         });
