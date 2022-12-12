@@ -28,6 +28,18 @@ public class EmergencyInActivity extends Activity {
         }
     };
 
+    // 사용자가 화면을 이탈하였을 때 동작되는 메소드
+    protected void onUserLeaveHint(){
+        beep.pause();
+        super.onUserLeaveHint();
+    }
+    
+    // 사용자가 화면에 복귀한 경우 동작되는 메소드
+    protected void onResume(){
+        beep.start();
+        super.onResume();
+    }
+    
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency);
