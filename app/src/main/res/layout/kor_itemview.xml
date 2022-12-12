@@ -62,5 +62,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/country"
         android:layout_toRightOf="@+id/populationlabel" />
-
+    
 </RelativeLayout>
