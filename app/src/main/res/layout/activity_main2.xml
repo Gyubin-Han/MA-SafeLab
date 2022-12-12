@@ -35,7 +35,7 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="화학물질 메모"
+        android:text="화학물질 대여/반납"
         app:backgroundTint="#CC000000"
         android:textColor="#FFD770"
         android:layout_gravity="center"
@@ -70,7 +70,7 @@
             app:backgroundTint="#CC000000"
             android:textColor="#FFD770"
             android:layout_gravity="center"
-            android:layout_marginTop="2dp"/>
+            android:layout_marginTop="3dp"/>
 
         <Button
             android:id="@+id/button6"
@@ -81,6 +81,16 @@
             android:textColor="#FFD770"
             android:layout_gravity="center"
             android:layout_marginTop="2dp"/>
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="환경설정"
+            android:textColor="#FFD770"
+            app:backgroundTint="#CC000000" />
 
     </LinearLayout>
 
