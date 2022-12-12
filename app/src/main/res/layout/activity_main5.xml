@@ -23,32 +23,57 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".check1Activity"
-        android:orientation="vertical">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
 
         <EditText
-            app:backgroundTint="#ffd700"
+            android:id="@+id/nowid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="아이디 입력"
             android:textColor="@color/white"
             android:textColorHint="#ffffff"
+            app:backgroundTint="#ffd700" />
+
+        <EditText
+            android:id="@+id/nowpw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="현재 비밀번호 입력"
-            />
-        <EditText
-            app:backgroundTint="#ffd700"
             android:textColor="@color/white"
             android:textColorHint="#ffffff"
+            app:backgroundTint="#ffd700"
+            android:inputType="textPassword"/>
+
+        <EditText
+            android:id="@+id/newpw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="새로운 비밀번호 입력"
-            />
+            android:hint="새로운 비밀번호 입력 (변경시)"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="#ffffff"
+            app:backgroundTint="#ffd700" />
 
         <Button
-            app:backgroundTint="#ffd700"
-            android:textColor="@color/black"
+            android:id="@+id/btn_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="변경" />
+            android:text="변경"
+            android:textColor="@color/black"
+            app:backgroundTint="#ffd700" />
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="삭제"
+            android:textColor="@color/black"
+            app:backgroundTint="#ffd700" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
