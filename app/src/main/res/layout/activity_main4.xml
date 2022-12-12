@@ -61,7 +61,7 @@
         android:id="@+id/inputText"
         android:layout_weight="9"
         android:textIsSelectable="false"
-        android:hint="메모 입력"
+        android:hint="물질 이름 : \n 사용자 : \n 대여날짜 : \n"
         android:gravity="top" />
 
 
