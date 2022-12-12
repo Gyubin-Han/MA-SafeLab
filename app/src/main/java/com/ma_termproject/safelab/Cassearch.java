@@ -8,8 +8,11 @@ import android.app.Activity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class Cassearch extends Activity {
 
@@ -82,5 +85,14 @@ public class Cassearch extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
+    }
+
+    public void onToggleClicked(View v) {
+        boolean on = ((ToggleButton) v).isChecked();
+        if (on) {
+            Toast.makeText(getApplicationContext(), "대여완료", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "반납완료", Toast.LENGTH_LONG).show();
+        }
     }
 }
