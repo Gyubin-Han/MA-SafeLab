@@ -12,6 +12,7 @@
         android:textAlignment="center"
         android:text="비상 상황 모드 - 가동중"/>
     <Button
+        android:id="@+id/BtnEmergencyOff"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="비상상황 종료"/>
