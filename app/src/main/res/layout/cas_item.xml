@@ -60,7 +60,20 @@
         android:id="@+id/population"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/country"
-        android:layout_toRightOf="@+id/populationlabel" />
+        android:layout_below="@+id/country" />
+
+
+    <ToggleButton
+        android:id="@+id/addIncomeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:onClick="onToggleClicked"
+        android:text="q"
+        android:textOff="대여가능"
+        android:textOn="대여중" />
+
+
+
 
 </RelativeLayout>
