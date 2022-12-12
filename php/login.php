@@ -20,8 +20,6 @@
         $response["success"] = true;
         $response["id"] = $id;
         $response["pw"] = $pw;
-        $response["name"] = $name;
-        $response["email"] = $email;
     }
 
     echo json_encode($response);
