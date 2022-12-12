@@ -28,7 +28,7 @@ public class MainActivity4 extends AppCompatActivity{
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("메모장");
+        setTitle("화학물질 대여/반납");
 
         super.onCreate(savedInstanceState);
 
