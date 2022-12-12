@@ -1,5 +1,6 @@
 package com.ma_termproject.safelab;
 
+import android.media.MediaPlayer;
 import android.telephony.SmsManager;
 
 import android.app.Activity;
@@ -18,6 +19,15 @@ public class EmergencyInActivity extends Activity {
             smsManager.sendTextMessage(dest,null,msg[i],null,null);
     }
 
+    MediaPlayer beep;
+    MediaPlayer.OnCompletionListener completeListener=new MediaPlayer.OnCompletionListener(){
+        public void onCompletion(MediaPlayer beep){
+            Log.i("TEST","음악 반복 재생");
+            beep=MediaPlayer.create(EmergencyInActivity.this,R.raw.beep1b);
+            beep.start();
+        }
+    };
+
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency);
@@ -27,9 +37,17 @@ public class EmergencyInActivity extends Activity {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Log.i("SafeLab","긴급상황 발동 시간 : "+sdf.format(date));
 
+        // 알림음 반복 재생 부분
+        beep=MediaPlayer.create(this,R.raw.beep1b);
+        beep.setLooping(true);   // 무한으로 재생되도록 지정
+//        beep.setOnCompletionListener(completeListener);   // 완료되었을 때, 다시 재생시키는 리스너 지정
+        beep.start();   // 재생 시작
+
         Button btn_emer_off=(Button)findViewById(R.id.BtnEmergencyOff);
         btn_emer_off.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                beep.stop();
+                beep.release();
                 finish();
             }
         });
