@@ -40,6 +40,14 @@ public class EmergencyInActivity extends Activity {
         super.onResume();
     }
     
+    // 뒤로 가기를 누른 경우 동작되는 메소드
+    public void onBackPressed(){
+        // 뒤로 가기를 누른 경우는 기능 종료를 위해 누른 경우가 대다수 이므로, 뒤로가기를 눌렀을 때에는 종료되도록 구현
+        beep.stop();
+        beep.release();
+        super.onBackPressed();
+    }
+    
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency);
