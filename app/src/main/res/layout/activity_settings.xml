@@ -11,6 +11,6 @@
         android:id="@+id/frag_setting"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.myapplication909.SettingFragment"/>
+        android:name="com.ma_termproject.safelab.SettingFragment"/>
 
 </RelativeLayout>

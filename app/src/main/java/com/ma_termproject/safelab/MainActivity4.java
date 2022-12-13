@@ -1,4 +1,4 @@
-package com.example.myapplication909;
+package com.ma_termproject.safelab;
 
 import android.content.Context;
 import android.os.Bundle;

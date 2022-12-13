@@ -1,4 +1,4 @@
-package com.example.myapplication909;
+package com.ma_termproject.safelab;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +18,14 @@ public class Kor_casAdapter extends BaseAdapter {
     // Declare Variables
     Context mContext;
     LayoutInflater inflater;
-    private List<com.example.myapplication909.Kor_cas> worldpopulationlist = null;
-    private ArrayList<com.example.myapplication909.Kor_cas> arraylist;
+    private List<com.ma_termproject.safelab.Kor_cas> worldpopulationlist = null;
+    private ArrayList<com.ma_termproject.safelab.Kor_cas> arraylist;
 
-    public Kor_casAdapter(Context context, List<com.example.myapplication909.Kor_cas> worldpopulationlist) {
+    public Kor_casAdapter(Context context, List<com.ma_termproject.safelab.Kor_cas> worldpopulationlist) {
         mContext = context;
         this.worldpopulationlist = worldpopulationlist;
         inflater = LayoutInflater.from(mContext);
-        this.arraylist = new ArrayList<com.example.myapplication909.Kor_cas>();
+        this.arraylist = new ArrayList<com.ma_termproject.safelab.Kor_cas>();
         this.arraylist.addAll(worldpopulationlist);
     }
 
@@ -41,7 +41,7 @@ public class Kor_casAdapter extends BaseAdapter {
     }
 
     @Override
-    public com.example.myapplication909.Kor_cas getItem(int position) {
+    public com.ma_termproject.safelab.Kor_cas getItem(int position) {
         return worldpopulationlist.get(position);
     }
 
@@ -74,7 +74,7 @@ public class Kor_casAdapter extends BaseAdapter {
             @Override
             public void onClick(View arg0) {
                 // Send single item click data to SingleItemView Class
-                Intent intent = new Intent(mContext, com.example.myapplication909.Cas_ItemView.class);
+                Intent intent = new Intent(mContext, com.ma_termproject.safelab.Cas_ItemView.class);
                 // Pass all data rank
                 intent.putExtra("rank",(worldpopulationlist.get(position).getRank()));
                 // Pass all data country
@@ -99,7 +99,7 @@ public class Kor_casAdapter extends BaseAdapter {
         }
         else
         {
-            for (com.example.myapplication909.Kor_cas kc : arraylist)
+            for (com.ma_termproject.safelab.Kor_cas kc : arraylist)
             {
                 if (kc.getCountry().toLowerCase(Locale.getDefault()).contains(charText))
                 {

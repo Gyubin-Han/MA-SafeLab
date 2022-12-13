@@ -1,5 +1,5 @@
 
-package com.example.test;
+package com.ma_termproject.safelab;
 
 import androidx.annotation.Nullable;
 

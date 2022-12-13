@@ -1,4 +1,4 @@
-package com.example.myapplication909;
+package com.ma_termproject.safelab;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -69,7 +69,7 @@ public class MainActivity2 extends AppCompatActivity {
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity2.this, com.example.myapplication909.Cassearch.class);
+                Intent intent=new Intent(MainActivity2.this, com.ma_termproject.safelab.Cassearch.class);
                 startActivity(intent);
             }
         });
@@ -77,7 +77,7 @@ public class MainActivity2 extends AppCompatActivity {
         button10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity2.this, com.example.myapplication909.SettingsActivity.class);
+                Intent intent=new Intent(MainActivity2.this, com.ma_termproject.safelab.SettingsActivity.class);
                 startActivity(intent);
             }
         });

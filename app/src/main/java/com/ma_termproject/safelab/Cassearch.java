@@ -1,4 +1,4 @@
-package com.example.myapplication909;
+package com.ma_termproject.safelab;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -18,12 +18,12 @@ public class Cassearch extends Activity {
 
     // Declare Variables
     ListView list;
-    com.example.myapplication909.Kor_casAdapter adapter;
+    com.ma_termproject.safelab.Kor_casAdapter adapter;
     EditText editsearch;
     String[] rank;
     String[] country;
     String[] population;
-    ArrayList<com.example.myapplication909.Kor_cas> arraylist = new ArrayList<com.example.myapplication909.Kor_cas>();
+    ArrayList<com.ma_termproject.safelab.Kor_cas> arraylist = new ArrayList<com.ma_termproject.safelab.Kor_cas>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,14 +41,14 @@ public class Cassearch extends Activity {
         list = (ListView) findViewById(R.id.listview);
 
         for (int i = 0; i < rank.length; i++) {
-            com.example.myapplication909.Kor_cas kc = new com.example.myapplication909.Kor_cas(rank[i], country[i],
+            com.ma_termproject.safelab.Kor_cas kc = new com.ma_termproject.safelab.Kor_cas(rank[i], country[i],
                     population[i]);
             // Binds all strings into an array
             arraylist.add(kc);
         }
 
         // Pass results to ListViewAdapter Class
-        adapter = new com.example.myapplication909.Kor_casAdapter(this, arraylist);
+        adapter = new com.ma_termproject.safelab.Kor_casAdapter(this, arraylist);
 
         // Binds the Adapter to the ListView
         list.setAdapter(adapter);

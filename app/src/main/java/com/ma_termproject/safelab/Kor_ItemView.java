@@ -1,11 +1,11 @@
-package com.example.myapplication909;
+package com.ma_termproject.safelab;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.myapplication909.R;
+import com.ma_termproject.safelab.R;
 
 public class Kor_ItemView extends Activity {
     // Declare Variables
