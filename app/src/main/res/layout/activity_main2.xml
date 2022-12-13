@@ -35,7 +35,7 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="화학물질 대여/반납"
+        android:text="특이사항 메모"
         app:backgroundTint="#CC000000"
         android:textColor="#FFD770"
         android:layout_gravity="center"
