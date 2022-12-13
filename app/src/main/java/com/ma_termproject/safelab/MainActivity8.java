@@ -17,33 +17,31 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity {
-    private EditText et_id, et_pw;
-    private Button btn_login, btn_register;
+public class MainActivity8 extends AppCompatActivity {
+
+    private EditText et_id, et_pw, et_name, et_email, et_depart;
+    private Button btn_register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main8);
 
         et_id = findViewById(R.id.et_id);
         et_pw = findViewById(R.id.et_pw);
-        btn_login = findViewById(R.id.btn_login);
+        et_name = findViewById(R.id.et_name);
+        et_email = findViewById(R.id.et_email);
+        et_depart = findViewById(R.id.et_depart);
+
         btn_register = findViewById(R.id.btn_register);
-
         btn_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivity8.class);
-                startActivity(intent);
-            }
-        });
-
-        btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String id = et_id.getText().toString();
                 String pw = et_pw.getText().toString();
+                String name = et_name.getText().toString();
+                String email = et_email.getText().toString();
+                String depart = et_depart.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -52,26 +50,25 @@ public class MainActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
                             if(success){
-                                String id = jsonObject.getString("id");
-                                String pw = jsonObject.getString("pw");
-                                Toast.makeText(getApplicationContext(), "로그인이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                                intent.putExtra("id", id);
-                                intent.putExtra("pw", pw);
+                                Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MainActivity8.this, MainActivity.class);
                                 startActivity(intent);
                             }
                             else {
-                                Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                                 return;
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
                     }
                 };
-                LoginRequest loginRequest = new LoginRequest(id, pw, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                queue.add(loginRequest);
+
+                RegisterRequest registerRequest = new RegisterRequest(id, pw, name, email, depart, responseListener);
+
+                RequestQueue queue = Volley.newRequestQueue(MainActivity8.this);
+                queue.add(registerRequest);
             }
         });
     }

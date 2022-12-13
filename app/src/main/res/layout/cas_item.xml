@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#B3000000">
+
+    <TextView
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/ranklabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="영문명 : " />
+
+    <TextView
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/ranklabel" />
+
+    <TextView
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/countrylabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ranklabel"
+        android:text="CAS 번호 : " />
+
+    <TextView
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rank"
+        android:layout_toRightOf="@+id/countrylabel" />
+
+    <TextView
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/populationlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/countrylabel"
+        android:text="한글명 : " />
+
+    <TextView
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/population"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/country" />
+
+
+    <ToggleButton
+        android:id="@+id/addIncomeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:onClick="onToggleClicked"
+        android:text="q"
+        android:textOff="대여가능"
+        android:textOn="대여중" />
+
+
+
+
+</RelativeLayout>
