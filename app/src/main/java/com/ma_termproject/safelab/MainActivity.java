@@ -1,4 +1,5 @@
-package com.example.myapplication909;
+
+package com.example.test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, com.example.myapplication909.MainActivity8.class);
+                Intent intent = new Intent(MainActivity.this, MainActivity8.class);
                 startActivity(intent);
             }
         });

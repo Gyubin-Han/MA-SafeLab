@@ -1,4 +1,5 @@
-package com.example.myapplication909;
+
+package com.example.test;
 
 import androidx.annotation.Nullable;
 
@@ -13,7 +14,9 @@ import java.util.Map;
 public class RegisterRequest extends StringRequest {
 
     //서버 URL 설정
-    final static private String URL = "http://172.30.1.64/register.php"; //"http://server.safelab.p-e.kr:7777/register.php"
+
+    final static private String URL = "http://server.safelab.p-e.kr:7777/register.php";
+
     private Map<String, String> map;
 
     public RegisterRequest(String id, String pw, String name, String email, String depart, Response.Listener<String> listener) {

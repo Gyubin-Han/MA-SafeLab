@@ -1,4 +1,4 @@
-package com.example.myapplication909;
+package com.example.test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -61,7 +61,8 @@ public class MainActivity5 extends AppCompatActivity {
                     }
                 };
 
-                com.example.myapplication909.UpdateRequest updateRequest = new com.example.myapplication909.UpdateRequest(user_id, current_pw, new_pw, responseListener);
+                UpdateRequest updateRequest = new UpdateRequest(user_id, current_pw, new_pw, responseListener);
+
                 RequestQueue queue = Volley.newRequestQueue(MainActivity5.this);
                 queue.add(updateRequest);
             }

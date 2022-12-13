@@ -1,4 +1,5 @@
-package com.example.myapplication909;
+package com.example.test;
+
 
 import androidx.annotation.Nullable;
 
@@ -12,8 +13,8 @@ import java.util.Map;
 
 public class LoginRequest extends StringRequest {
 
-    //서버 URL 설정
-    final static private String URL = "http://172.30.1.64/login.php"; //"http://server.safelab.p-e.kr:7777/login.php"
+
+    final static private String URL = "http://server.safelab.p-e.kr:7777/login.php";
     private Map<String, String> map;
 
     public LoginRequest(String id, String pw, Response.Listener<String> listener) {

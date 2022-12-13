@@ -1,4 +1,5 @@
-package com.example.myapplication909;
+
+package com.example.test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -64,7 +65,8 @@ public class MainActivity8 extends AppCompatActivity {
                     }
                 };
 
-                com.example.myapplication909.RegisterRequest registerRequest = new com.example.myapplication909.RegisterRequest(id, pw, name, email, depart, responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(id, pw, name, email, depart, responseListener);
+
                 RequestQueue queue = Volley.newRequestQueue(MainActivity8.this);
                 queue.add(registerRequest);
             }
