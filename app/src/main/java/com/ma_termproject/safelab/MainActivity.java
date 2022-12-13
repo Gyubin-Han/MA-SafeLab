@@ -25,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Safe Lab");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        if(ActivityCompat.checkSelfPermission(this,Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_DENIED){
+            Log.i("SafeLab","문자 보내기 권한이 없습니다. 사용자에게 부여를 요청합니다.");
+            String[] permissions = {Manifest.permission.SEND_SMS};
+            ActivityCompat.requestPermissions(this,permissions, MODE_PRIVATE);
+        }
 
         et_id = findViewById(R.id.et_id);
         et_pw = findViewById(R.id.et_pw);
