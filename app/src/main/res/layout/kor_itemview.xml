@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/caslabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cas 번호 : " />
+
+    <TextView
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/cas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/caslabel" />
+
+    <TextView
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/countrylabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/caslabel"
+        android:text="영문명 : " />
+
+    <TextView
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cas"
+        android:layout_toRightOf="@+id/countrylabel" />
+
+    <TextView
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/populationlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/countrylabel"
+        android:text="한글명 : " />
+
+    <TextView
+        app:backgroundTint="#ffd700"
+        android:textColor="@color/white"
+        android:textColorHint="#ffffff"
+        android:id="@+id/population"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/country"
+        android:layout_toRightOf="@+id/populationlabel" />
+    
+</RelativeLayout>

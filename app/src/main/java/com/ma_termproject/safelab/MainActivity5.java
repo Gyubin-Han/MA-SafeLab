@@ -62,6 +62,7 @@ public class MainActivity5 extends AppCompatActivity {
                 };
 
                 UpdateRequest updateRequest = new UpdateRequest(user_id, current_pw, new_pw, responseListener);
+
                 RequestQueue queue = Volley.newRequestQueue(MainActivity5.this);
                 queue.add(updateRequest);
             }
