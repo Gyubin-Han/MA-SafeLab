@@ -16,6 +16,7 @@ public class SettingFragment extends PreferenceFragment {
     SharedPreferences pref;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
 //별도의 화면 레이아웃파일(layout폴더)을 사용하지 않고

@@ -13,7 +13,7 @@ import java.util.Map;
 public class DeleteRequest extends StringRequest {
 
     //서버 URL 설정
-    final static private String URL = "http://172.30.1.64/delete.php"; //"http://server.safelab.p-e.kr:7777/delete.php";
+    final static private String URL = "http://192.168.0.23/delete.php"; //"http://server.safelab.p-e.kr:7777/delete.php";
     private Map<String, String> map;
 
     public DeleteRequest(String user_id, String current_pw, Response.Listener<String> listener) {

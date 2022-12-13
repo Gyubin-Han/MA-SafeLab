@@ -13,7 +13,7 @@ import java.util.Map;
 public class UpdateRequest extends StringRequest {
 
     //서버 URL 설정
-    final static private String URL = "http://172.30.1.64/update.php"; //"http://server.safelab.p-e.kr:7777/update.php"
+    final static private String URL = "http://192.168.0.23/update.php"; //"http://server.safelab.p-e.kr:7777/update.php"
     private Map<String, String> map;
 
     public UpdateRequest(String user_id, String current_pw, String new_pw, Response.Listener<String> listener) {
