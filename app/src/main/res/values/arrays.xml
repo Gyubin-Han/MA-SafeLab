@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sounds">
+        <item>또잉</item>
+        <item>뚀윙</item>
+        <item>휘잉</item>
+        <item>튜듁</item>
+    </string-array>
+
+    <string-array name="favors">
+        <item>여행</item>
+        <item>독서</item>
+        <item>운동</item>
+        <item>투자</item>
+    </string-array>
+
+</resources>
